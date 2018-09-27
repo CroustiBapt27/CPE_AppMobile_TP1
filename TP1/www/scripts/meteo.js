@@ -11,7 +11,7 @@ function getMeteoByCp() {
 
 function getMeteoByLocation() {
     
-    var onSuccess = function (position) {
+    function onSuccess(position) {
         var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude
             + "&lon=" + position.coords.longitude + "&appid=68a40fffe840bac1f3463b4c9a130473&units=metric&lang=fr";
         setValues(url);
@@ -31,6 +31,8 @@ function setValues(url) {
         $('#description').text('METEO: ' + result.weather[0].description);
         $('#temperature').text('TEMPERATURE: ' + result.main.temp + ' C');
         $('#error').text('');
+
+        $('#divMap').text('');
         Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', {
             callback: function () {
                 var map = new Microsoft.Maps.Map($('#divMap').get(0),
@@ -39,7 +41,7 @@ function setValues(url) {
                         mapTypeId: Microsoft.Maps.MapTypeId.road,
                         enableClickableLogo: false,
                         enableSearchLogo: false,
-                        center: new Microsoft.Maps.Location(result.coord.lon, result.coord.lat),
+                        center: new Microsoft.Maps.Location(result.coord.lat, result.coord.lon),
                         zoom: 13,
                         theme: new Microsoft.Maps.Themes.BingTheme()
                     });
@@ -49,9 +51,8 @@ function setValues(url) {
                     { width: 100, height: 50 }
                 );
                 map.entities.push(epingle);
-                }
-             });
-       
+            }
+        });
         })
         .fail(function () {
             console.log("error");

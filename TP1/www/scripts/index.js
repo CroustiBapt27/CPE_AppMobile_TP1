@@ -25,17 +25,7 @@
         //listeningElement.setAttribute('style', 'display:none;');
         //receivedElement.setAttribute('style', 'display:block;');
     };
-
     
-      
-    function selectionFavoris(id) {
-        if (id != null) {
-            $('#zipcode').val(id);
-            console.log('in test');
-        }
-        
-        return false
-    }
     function afficherFavoris() {
         $('#favoris').text('');
         $('#ajouterFavoris').text('');

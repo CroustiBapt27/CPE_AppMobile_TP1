@@ -11,9 +11,8 @@ function getMeteoByCp() {
 
 function getMeteoByLocation() {
     
-    $('#store').text("Disponible sur Google Play");
 
-    var onSuccess = function (position) {
+    function onSuccess (position) {
         var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude
             + "&lon=" + position.coords.longitude + "&appid=68a40fffe840bac1f3463b4c9a130473&units=metric&lang=fr";
         setValues(url);
@@ -27,9 +26,7 @@ function getMeteoByLocation() {
 };
 
 function setValues(url) {
-
     $.getJSON(url, function (result) {
-        console.log("success");
         $('#nom_ville').text(result.name);
         $('#description').text('METEO: ' + result.weather[0].description);
         $('#temperature').text('TEMPERATURE: ' + result.main.temp + ' C');
@@ -68,6 +65,8 @@ function setValues(url) {
         .always(function () {
             console.log("complete");
         });
-    
+
+    $('#store').text("Disponible sur Google Play");
+
     return false;
 }
