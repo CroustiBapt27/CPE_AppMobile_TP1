@@ -34,6 +34,29 @@ function setValues(url) {
         $('#description').text('METEO: ' + result.weather[0].description);
         $('#temperature').text('TEMPERATURE: ' + result.main.temp + ' C');
         $('#error').text('');
+
+        $('#divMap').text('');
+        Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', {
+            callback: function () {
+                var map = new Microsoft.Maps.Map($('#divMap').get(0),
+                    {
+                        credentials: "Arl-frbfucATAoxoxgefsmbUBSwQHJatcgkmDz6X1eVKTIMYP9flFD1IHZ9kw1Wz",
+                        mapTypeId: Microsoft.Maps.MapTypeId.road,
+                        enableClickableLogo: false,
+                        enableSearchLogo: false,
+                        center: new Microsoft.Maps.Location(result.coord.lat, result.coord.lon),
+                        zoom: 13,
+                        theme: new Microsoft.Maps.Themes.BingTheme()
+                    });
+                var mapCenter = map.getCenter();
+                var epingle = new Microsoft.Maps.Pushpin(
+                    mapCenter,
+                    { width: 100, height: 50 }
+                );
+                map.entities.push(epingle);
+            }
+        });
+        
     })
         .fail(function () {
             console.log("error");
