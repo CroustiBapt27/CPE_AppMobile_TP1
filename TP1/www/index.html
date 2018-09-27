@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; ">
+    
+        
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        <title>Best appli meteo ever</title>
+    </head>
+
+    <body>
+        <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+        <script src="scripts/jquery-3.3.1.min.js"></script>
+        <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+
+        <script type="text/javascript" src="scripts/meteo.js"></script>
+
+        <h1>Application Météo</h1>
+        <div>
+            <input type="text" placeholder="ex.69100" id="zipcode" />
+        </div>
+
+        <div>
+            <input type="button" value="Valider" id="btnGetMeteo" />
+            <input type="button" value="Favoris" id="btnGetFavoris" />
+        </div>
+
+        <div id="error"></div>
+        <div id="nom_ville"></div>
+        <div id="description"></div>
+        <div id="temperature"></div>
+        <div id="favoris"></div>
+        <div id="ajouterFavoris"></div>
+        <div id="divMap"><div style='width: 500px; height: 500px;'></div></div>
+
+    </body>
+
+    <footer data-role="footer" data-position="fixed">
+        <h4 id="store"></h4>
+    </footer>
+
+</html>
